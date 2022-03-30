@@ -22,7 +22,7 @@ namespace mvvm_demo
     public partial class MainWindow : Window
     {
 
-        MainWindowViewmodel vm = new MainWindowViewmodel();
+       // MainWindowViewmodel vm = new MainWindowViewmodel();
 
         public MainWindow()
         {
