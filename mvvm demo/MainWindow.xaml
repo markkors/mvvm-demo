@@ -1,0 +1,74 @@
+﻿<Window x:Class="mvvm_demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:mvvm_demo"
+        xmlns:vm="clr-namespace:mvvm_demo.Viewmodels"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="450"
+        Width="800">
+    <Window.DataContext>
+        <vm:MainWindowViewmodel x:Name="ViewModel" />
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <!--Header-->
+            <RowDefinition />
+            <!--Content-->
+            <RowDefinition />
+            <!--Footer-->
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <StackPanel>
+            <TextBox x:Name="txtInstructions"
+                     Text="Dit is de view van deze applicatie"
+                     FontSize="20"
+                     Grid.Row="0" />
+            <Button Content="Stel de voornaam in"
+                CommandParameter="{Binding ElementName=First, Path=Text}"
+                Command="{Binding CommandStelVoornaamIn}"/>
+            <Button Content="Stel de achternaam in"
+                    CommandParameter="{Binding ElementName=Last, Path=Text}"
+                    Command="{Binding CommandStelAchternaamIn}" />
+            <TextBox x:Name="First" />
+            <TextBox x:Name="Last" />
+        </StackPanel>
+        
+        <Grid Grid.Row="1"
+              Grid.RowSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="44*" />
+                <RowDefinition Height="34*" />
+                <RowDefinition Height="40*" />
+                <RowDefinition Height="39*" />
+                <RowDefinition Height="40*" />
+                <RowDefinition Height="49*" />
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="txtFullNameDescription"
+                       Text="Full name of person:"
+                       Grid.Row="0" />
+            <TextBlock x:Name="txtPersonFullName"
+                       Text="{Binding FullName}"
+                       Grid.Row="1" />
+            <TextBlock x:Name="txtFirstNameDescription"
+                       Text="First name of person:"
+                       Grid.Row="2" />
+            <TextBlock x:Name="txtPersonFirstName"
+                       Text="{Binding FirstName}"
+                       Grid.Row="3" />
+            <TextBlock x:Name="txtLastNameDescription"
+                       Text="Last name of person:"
+                       Grid.Row="4" />
+            <TextBlock x:Name="txtPersonLastName"
+                       Text="{Binding LastName}"
+                       Grid.Row="5" />
+
+        </Grid>
+
+
+
+    </Grid>
+</Window>
